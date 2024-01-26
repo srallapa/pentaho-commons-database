@@ -48,7 +48,6 @@ public class PDIDialectTest {
 
   @Before
   public void setUp() {
-    when( connection.getAccessType() ).thenReturn( DatabaseAccessType.NATIVE );
     when( connection.getDatabasePort() ).thenReturn( "8080" );
     when( connection.getHostname() ).thenReturn( "localhost" );
   }
@@ -59,7 +58,6 @@ public class PDIDialectTest {
     assertThat( dialect.getURL( connection ), equalTo( "jdbc:pdi://localhost:8080/pentaho/kettle" ) );
     Map attributes = new HashMap();
     attributes.put( "KettleThin.webappname", "pentaho" );
-    when( connection.getAttributes() ).thenReturn( attributes );
     assertThat( dialect.getURL( connection ), equalTo( "jdbc:pdi://localhost:8080/pentaho/kettle" ) );
   }
 
